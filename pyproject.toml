@@ -1,0 +1,12 @@
+[project]
+name = "big-data"
+version = "0.1.0"
+description = "Project #2 for the 2026-2 Distributed Systems class, taught at Universidad EAFIT by professor Álvaro Ospina Sanjuan"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "ty>=0.0.98",
+]
