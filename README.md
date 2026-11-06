@@ -6,5 +6,5 @@ Project #2 for the 2026-2 Distributed Systems class, taught at Universidad EAFIT
 * Samuel Herrera Hoyos
 * Sebastián Villegas Calle
 
-# TODO
+## TODO
 TODO
