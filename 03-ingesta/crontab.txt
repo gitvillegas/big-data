@@ -1,0 +1,3 @@
+# Esta linea se pega al final del archivo
+
+0 2 * * * /usr/bin/python3 /home/ubuntu/ingesta/ingesta.py >> /home/ubuntu/ingesta/ingesta.log 2>&1
