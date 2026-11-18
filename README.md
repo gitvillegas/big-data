@@ -1,34 +1,41 @@
-# "big-data" project
-*(Yep. that is the name of the project. We ran out of ideas for the name of the project)*
+# Proyecto 2 de Big Data: vulnerabilidad territorial en Madrid
 
-Project #2 for the 2026-2 Distributed Systems class, taught at Universidad EAFIT by professor Álvaro Ospina Sanjuan.
+SI3007 Sistemas Distribuidos / ST0263 Tópicos Especiales en Telemática, 2026-2, Universidad EAFIT.
 
----
+**Integrantes:** Juan José Gómez Ramírez, Samuel Herrera Hoyos y Sebastián Villegas Calle.
 
-## Team Members
+## Caso de estudio
 
-- Juan José Gómez Ramírez
-- Samuel Herrera Hoyos
-- Sebastián Villegas Calle
+Analizamos los 21 distritos de Madrid en 2024 cruzando su población con el índice de vulnerabilidad IGUALA del Ayuntamiento, en tres esferas: economía y empleo, bienestar e igualdad, y educación y cultura. Un índice más alto indica mayor vulnerabilidad. Las 5 preguntas de negocio están en [`01-caso-estudio`](01-caso-estudio).
 
+## Arquitectura
 
-## How to Run the Project
+```
+EC2 (CSV) ─┐
+RDS        ├─> ingesta.py + cron ─> S3 raw/ ─> Glue (Spark) ─> trusted/ ─> Glue (Spark) ─> refined/
+URL       ─┘                                                                              │
+                                              Glue Crawler ─> Glue Data Catalog (proyecto2_db)
+                                                                                           │
+                                Athena · EMR (Hive, SparkSQL, PySpark) · Lambda + API Gateway + Streamlit
+```
 
-1. Install **Python 3.14**: [Download Python 3.14.10](https://www.python.org/downloads/release/python-31410/)
-2. Install **uv**: [Installation Guide](https://docs.astral.sh/uv/getting-started/installation/)
-3. Copy the repository into the folder of your preference.
-4. Open a terminal in the project folder and run the following command to install all packages and project dependencies:
+## Puntos
 
-   ```bash
-   uv sync
-   ```
+| Punto | Carpeta | Tecnologías |
+|---|---|---|
+| 1. Caso de estudio | [`01-caso-estudio`](01-caso-estudio) | Datos abiertos de Madrid |
+| 2. Fuentes de datos | [`02-fuentes-datos`](02-fuentes-datos) | EC2, RDS MariaDB, URL |
+| 3. Ingesta automática | [`03-ingesta`](03-ingesta) | Python, cron, S3 |
+| 4. Preparación de datos | [`04-preparacion-datos`](04-preparacion-datos) | AWS Glue, PySpark, Parquet |
+| 5. Catalogación | [`05-catalogacion`](05-catalogacion) | Glue Crawler, Glue Data Catalog, Hive |
+| 6. Consultas SQL | [`06-consultas-sql`](06-consultas-sql) | Athena, Hive, SparkSQL |
+| 7. Análisis con PySpark | [`07-analisis-pyspark`](07-analisis-pyspark) | PySpark en EMR |
+| 8. Visualización y API | [`08-visualizacion`](08-visualizacion) | Lambda, API Gateway, Streamlit, matplotlib |
 
-   Then run the following command to run the program's entry point:
+## Resultados principales
 
-   ```bash
-   uv run main.py
-   ```
+- Puente de Vallecas es el distrito más vulnerable en las tres esferas.
+- La población tiene una relación débil con la vulnerabilidad económica (correlación 0,34).
+- Economía y educación coinciden casi por completo (0,95), mientras que bienestar coincide solo en parte con ambas (0,55 y 0,48).
 
-## TODO
-
-TODO
+El detalle de cada respuesta está en [`06-consultas-sql/athena`](06-consultas-sql/athena).
