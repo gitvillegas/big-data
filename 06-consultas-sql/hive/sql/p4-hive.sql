@@ -1,0 +1,1 @@
+hive -e "SELECT rank_ec AS puesto, distrito, ivt_ec, ivt_ec_media_ciudad, ROUND(ivt_ec - ivt_ec_media_ciudad, 2) AS diferencia_vs_media FROM proyecto2_db.distritos_2024 ORDER BY ivt_ec DESC"

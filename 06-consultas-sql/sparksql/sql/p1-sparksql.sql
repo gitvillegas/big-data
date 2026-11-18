@@ -1,0 +1,1 @@
+spark-sql -e "SELECT rank_ee AS puesto, distrito, ivt_ee, ivt_ee_media_ciudad, ROUND(ivt_ee - ivt_ee_media_ciudad, 2) AS diferencia_vs_media FROM proyecto2_db.distritos_2024 ORDER BY ivt_ee DESC"

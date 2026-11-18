@@ -1,0 +1,1 @@
+hive -e "SELECT rank_poblacion, distrito, poblacion, rank_ee, ivt_ee FROM proyecto2_db.distritos_2024 ORDER BY poblacion DESC"

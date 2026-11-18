@@ -1,0 +1,1 @@
+spark-sql -e "SELECT ROUND(CORR(ivt_ec, ivt_bi), 2) AS pearson, ROUND(CORR(rank_ec, rank_bi), 2) AS spearman, SUM(CASE WHEN rank_ec <= 5 AND rank_bi <= 5 THEN 1 ELSE 0 END) AS coinciden_top5 FROM proyecto2_db.distritos_2024"

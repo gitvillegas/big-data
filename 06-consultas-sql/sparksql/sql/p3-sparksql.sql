@@ -1,0 +1,1 @@
+spark-sql -e "SELECT distrito, rank_ee, ivt_ee, rank_bi, ivt_bi, ABS(rank_ee - rank_bi) AS diferencia_puestos FROM proyecto2_db.distritos_2024 ORDER BY rank_ee"
