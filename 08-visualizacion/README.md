@@ -86,7 +86,7 @@ def lambda_handler(event, context):
 
 Pulsamos **Deploy** y probamos con **Test** usando el evento `{}`. La respuesta debe ser `statusCode 200` con los 21 distritos.
 
-![Función Lambda y prueba exitosa](evidencias/01_lambda_prueba.png)
+![Función Lambda y prueba exitosa](./evidencias/01_lambda_prueba.PNG)
 
 ## 2. API Gateway
 
@@ -96,7 +96,7 @@ Pulsamos **Deploy** y probamos con **Test** usando el evento `{}`. La respuesta 
 4. Dejamos el stage `$default` con auto-deploy.
 5. La **Invoke URL** está en _Stages_, `$default`, y tiene la forma `https://XXXX.execute-api.us-east-1.amazonaws.com`.
 
-![API Gateway con la ruta GET /distritos](evidencias/02_api_gateway_ruta.png)
+![API Gateway con la ruta GET /distritos](./evidencias/02_api_gateway_ruta.PNG)
 
 Probamos la API:
 
@@ -104,7 +104,7 @@ Probamos la API:
 curl https://XXXX.execute-api.us-east-1.amazonaws.com/distritos
 ```
 
-![Respuesta JSON de la API](evidencias/03_curl_api.png)
+![Respuesta JSON de la API](./evidencias/03_curl_api.PNG)
 
 ## 3. Aplicación Streamlit
 
@@ -132,7 +132,7 @@ En **EC2**, **Instances**, seleccionamos la instancia y abrimos la pestaña **Se
 
 Guardamos con **Save rules**. Hay que editar el grupo que realmente está asignado a la instancia.
 
-![Regla de entrada del puerto 8501](evidencias/04_security_group.png)
+![Regla de entrada del puerto 8501](./evidencias/04_security_group.PNG)
 
 ### 4.2 Conexión e instalación de uv
 
@@ -173,7 +173,7 @@ nohup uv run streamlit run 08-visualizacion/app.py \
 
 La aplicación queda disponible en `http://IP-PUBLICA-EC2:8501`.
 
-![Aplicación corriendo en el navegador](evidencias/05_app_pregunta1.png)
+![Aplicación corriendo en el navegador](./evidencias/05_app_pregunta1.PNG)
 
 ### 4.6 Comandos útiles
 
@@ -232,11 +232,11 @@ uv run streamlit run 08-visualizacion/app.py
 - `curl` a la API devolviendo el JSON.
 - Regla de entrada del puerto 8501 en el security group.
 - La aplicación en el navegador, una captura por pregunta:
-  - ![Pregunta 1](evidencias/05_app_pregunta1.png)
-  - ![Pregunta 2](evidencias/06_app_pregunta2.png)
-  - ![Pregunta 3](evidencias/07_app_pregunta3.png)
-  - ![Pregunta 4](evidencias/08_app_pregunta4.png)
-  - ![Pregunta 5](evidencias/09_app_pregunta5.png)
+  - ![Pregunta 1](./evidencias/05_app_pregunta1.PNG)
+  - ![Pregunta 2](./evidencias/06_app_pregunta2.PNG)
+  - ![Pregunta 3](./evidencias/07_app_pregunta3.PNG)
+  - ![Pregunta 4](./evidencias/08_app_pregunta4.PNG)
+  - ![Pregunta 5](./evidencias/09_app_pregunta5.PNG)
 
 ## Notas y problemas encontrados
 
